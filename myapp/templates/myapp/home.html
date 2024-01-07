@@ -1,0 +1,26 @@
+{% extends 'myapp/base.html' %}
+{% block content %}
+<div class="container" style="position: relative; height: 100vh; overflow: hidden;">
+    <div class="translucent-box" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: rgba(255, 255, 255, 0.9); padding: 30px; border-radius: 12px; width: 80%; max-width: 1200px;">
+        <h1 style="margin-top: 20px; color: #333;">Welcome to Bus Reservation System</h1>
+        <div class="scrolling-images" style="overflow-x: hidden; white-space: nowrap;">
+            <img src="https://media.istockphoto.com/id/1141011037/photo/best-bus-a-public-transportation-of-mumbai.jpg?s=612x612&w=0&k=20&c=l46pBC2c4BKDSzInm1uiC1V53SQjcJdcCsovebkRxAU=" alt="Image 1" style="width: 100%;">
+            <img src="https://media.gettyimages.com/id/50604364/photo/commuters-hanging-off-crowded-red-line-bus-privately-owned-run-transport-system-notorious-for.jpg?s=612x612&w=gi&k=20&c=tklvZl9yL_D7RHcHr2vT5Jgg1cPk10O4o_dnXehfc-k=" alt="Image 2" style="width: 100%;">
+            <img src="https://assets.cntraveller.in/photos/6154580eef20fb3fd11e53ab/master/w_1600%2Cc_limit/Carawander.jpeg" alt="Image 3" style="width: 100%;">
+        </div>
+    </div>
+</div>
+<script>
+    const scrollingImages = document.querySelector('.scrolling-images');
+    let scrollAmount = 3;
+
+    function scrollImages() {
+        scrollingImages.scrollLeft += scrollAmount;
+    }
+    const scrollInterval = setInterval(scrollImages, 30);
+    setTimeout(() => {
+        clearInterval(scrollInterval);
+    }, 50000);
+</script>
+
+{% endblock %}

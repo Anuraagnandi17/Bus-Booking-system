@@ -1,0 +1,76 @@
+{% extends 'myapp/base.html' %}
+{% block content %}
+<div class="container" style="position: relative; height: 100vh; overflow: hidden;">
+    <div class="translucent-box" style="position: absolute; top: 30%; left: 50%; transform: translate(-50%, -50%); background-color: rgba(255, 255, 255, 0.95); padding: 30px; border-radius: 12px; width: 80%; max-width: 1200px;">
+
+        <h3>{{ msg }}</h3>
+        <div class="table-container" style="max-height: 400px; overflow-y: auto;">
+            <table id="busTable" class="table table-striped">
+                <thead style="background-color: blue; color: white;">
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Source</th>
+                        <th>Destination</th>
+                        <th>Number of Seats</th>
+                        <th>Seats Remaining</th>
+                        <th>Price</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                    </tr>
+                </thead>
+
+                {% for bus in bus_list %}
+                <tr>
+                    <td>{{ bus.id }}</td>
+                    <td>{{ bus.bus_name }}</td>
+                    <td>{{ bus.source }}</td>
+                    <td>{{ bus.dest }}</td>
+                    <td>{{ bus.nos }}</td>
+                    {% if bus.rem < 10 %}
+                        <td class="remaining-seats_low-remaining">{{ bus.rem }}</td>
+                    {% elif bus.rem < 20 %}
+                        <td class="remaining-seats_medium-remaining">{{ bus.rem }}</td>
+                    {% else %}
+                        <td class="remaining-seats_high-remaining">{{ bus.rem }}</td>
+                    {% endif %}
+                    <td>{{ bus.price }}</td>
+                    <td>{{ bus.date }}</td>
+                    <td>{{ bus.time }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+    <div class="persistent-box" style="position: absolute; top: 70%; left: 50%; transform: translate(-50%, -50%); background-color: rgba(255, 255, 255, 0.95); padding: 30px; border-radius: 12px; width: 80%; max-width: 800px;">
+        <form action="{% url 'bookings' %}" method="post">
+            <h3>Choose Bus to Book</h3>
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="bus-id">Bus ID</label>
+                <input name="bus_id" class="form-control" type="number" id="bus-id" required>
+            </div>
+            <div class="form-group">
+                <label for="num-seats">Number of Seats</label>
+                <input name="no_seats" class="form-control" type="number" id="num-seats" required>
+            </div>
+            <br>
+            <div class="text-right">
+                <button type="submit" class="btn btn-success">Book Bus</button>
+            </div>
+            {{ error }}
+        </form>
+
+        <hr>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                document.getElementById('run-dijkstra').addEventListener('click', function() {
+                    const shortestPath = dijkstra(graphData, startNode, endNode);
+                    console.log('Shortest Path:', shortestPath);
+                });
+            });
+        </script>
+    </div>
+
+</div>
+{% endblock %}

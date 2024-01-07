@@ -1,0 +1,46 @@
+{% extends 'myapp/base.html' %}
+
+{% block content %}
+<div class="container"
+    style="position: relative; background: url('your-background-image.jpg') center/cover; height: 100vh;">
+
+    <div class="translucent-box"
+        style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: rgba(215, 223, 229, 0.9); padding: 20px; border-radius: 8px; width: 80%; max-width: 1200px;">
+
+        <h1 style="color: #000000; text-align: center;">Welcome to Transport authority's Booking site</h1>
+
+        <div class="row">
+            <div class="col-sm-6 mx-auto">
+                <h2 style="color: #333;">Please Log in</h2>
+
+                <form action="{% url 'signin' %}" method="post">
+                    {% csrf_token %}
+                    <div class="form-group row">
+                        <label for="example-email-input" class="col-4 col-form-label">Username:</label>
+                        <div class="col-10">
+                            <input name='name' class="form-control" type="text" id="example-email-input">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="example-email-input" class="col-4 col-form-label">Password:</label>
+                        <div class="col-10">
+                            <input name='password' class="form-control" type="password">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <button type="submit" class="btn btn-primary">Sign in</button>
+                        </div>
+                        <div class="col-md-4">
+                            <a href="{% url 'signup' %}" class="btn btn-success float-right">Sign up</a>
+                        </div>
+                    </div>
+                </form>
+                <p style="color: #d9534f; margin-top: 10px;">{{error}}</p>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}
