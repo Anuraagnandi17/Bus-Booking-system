@@ -1,7 +1,7 @@
 {% extends 'myapp/base.html' %}
 {% block content %}
 <div class="container" style="position: relative; height: 100vh; overflow: hidden;">
-    <div class="translucent-box" style="position: absolute; top: 30%; left: 50%; transform: translate(-50%, -50%); background-color: rgba(255, 255, 255, 0.95); padding: 30px; border-radius: 12px; width: 80%; max-width: 1200px;">
+    <div class="translucent-box" style="position: absolute; top: 30%; left: 50%; transform: translate(-50%, -50%); background-color: rgba(255, 255, 255, 0.95); padding: 30px; border-radius: 12px; width: 100%; max-width: 1200px;">
 
         <h3>{{ msg }}</h3>
         <div class="table-container" style="max-height: 400px; overflow-y: auto;">
@@ -42,7 +42,7 @@
             </table>
         </div>
     </div>
-    <div class="persistent-box" style="position: absolute; top: 70%; left: 50%; transform: translate(-50%, -50%); background-color: rgba(255, 255, 255, 0.95); padding: 30px; border-radius: 12px; width: 80%; max-width: 800px;">
+    <div class="persistent-box" style="position: absolute; top: 75%; left: 50%; transform: translate(-50%, -50%); background-color: rgba(255, 255, 255, 0.95); padding: 30px; border-radius: 12px; width: 80%; max-width: 800px;">
         <form action="{% url 'bookings' %}" method="post">
             <h3>Choose Bus to Book</h3>
             {% csrf_token %}

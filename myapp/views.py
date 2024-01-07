@@ -77,7 +77,6 @@ def cancellings(request):
     context = {}
     if request.method == 'POST':
         id_r = request.POST.get('bus_id')
-
         try:
             book = get_object_or_404(Book, id=id_r)
             bus = get_object_or_404(Bus, id=book.busid)
