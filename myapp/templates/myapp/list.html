@@ -29,7 +29,7 @@
                     <td>{{ bus.nos }}</td>
                     {% if bus.rem < 10 %}
                         <td class="remaining-seats_low-remaining">{{ bus.rem }}</td>
-                    {% elif bus.rem < 20 %}
+                    {% elif bus.rem < 40 %}
                         <td class="remaining-seats_medium-remaining">{{ bus.rem }}</td>
                     {% else %}
                         <td class="remaining-seats_high-remaining">{{ bus.rem }}</td>
